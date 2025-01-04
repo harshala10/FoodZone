@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container mt-5">
+    <h2>Order {{ dish.name }}</h2>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/media/{{ dish.image }}" alt="{{ dish.name }}" style="width:100%; height: auto;">
+        </div>
+        <div class="col-md-6">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.details }}</p>
+            <h4>Price: Rs {{ dish.discounted_price }}</h4>
+            {% if dish.price != dish.discounted_price %}
+            <p><del>Original Price: Rs {{ dish.price }}</del></p>
+            {% endif %}
+            <form method="post" action="{% url 'dish_order' dish_id=dish.id %}">
+                {% csrf_token %}
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                <br><br>
+                <button type="submit" class="btn btn-success">Confirm Order</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

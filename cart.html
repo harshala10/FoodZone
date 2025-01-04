@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container mt-5">
+    <h2>Your Cart</h2>
+    {% if cart and cart.items.all %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.items.all %}
+            <tr>
+                <td>{{ item.dish.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>Rs {{ item.dish.discounted_price }}</td>
+                <td>
+                    <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm">Remove</a>
+                </td>
+                <!-- <td>Rs {{ item.quantity|add:item.dish.discounted_price }}</td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+    <a href="razorpay_payment.html"><button type="submit" class="btn btn-success">Confirm Order</button></a>
+    {% else %}
+    <p>Your cart is empty!</p>
+    {% endif %}
+</div>
+{% endblock %}

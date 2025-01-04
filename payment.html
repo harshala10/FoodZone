@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+    .nav-link{
+        color:#666666 !important;
+    } 
+    .mu-header, nav,header{
+        background-color: black !important;
+    }
+    
+</style>
+{% endblock %}
+{% block content %}
+
+<h1>Payment Successful</h1>
+    <p>Your payment of Rs. {{ order.total_price }} has been received.</p>
+    <a href="/">Go to Home</a>
+{% endblock %}

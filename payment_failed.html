@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+    .nav-link{
+        color:#666666 !important;
+    } 
+    .mu-header, nav,header{
+        background-color: black !important;
+    }
+</style>
+<!-- {% endblock %} -->
+{% block content %}
+
+<h1>Payment Failed</h1>
+    <p>{{ error }}</p>
+    <a href="/">Try Again</a>
+{% endblock %}

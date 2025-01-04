@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<br><br><br><br>
+<div class="container text-center">
+    {% if success %}
+        <h1>Email Sent Successfully!</h1>
+        <p>We have sent a confirmation email to <strong>{{ email }}</strong>.</p>
+        <div class="dish-details">
+            <h2>Dish Details:</h2>
+            <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="img-fluid" style="max-width: 200px;">
+            <h3>{{ dish.name }}</h3>
+            <p>Price: ₹{{ order.total_price }}</p>
+            <p>Quantity: {{ order.quantity }}</p>
+            <p>Total Price: ₹{{ order.total_price }}</p>
+            <p>Order ID: {{ order.id }}</p>
+        </div>
+        <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
+    {% else %}
+        <h1>Failed to Send Email</h1>
+        <p>There was an error sending the email to <strong>{{ email }}</strong>.</p>
+        <p>Error: {{ error }}</p>
+        <a href="/dashboard" class="btn btn-danger">Go Back</a>
+    {% endif %}
+</div>
+{% endblock %}
